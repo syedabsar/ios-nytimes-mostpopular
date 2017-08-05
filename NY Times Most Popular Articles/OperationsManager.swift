@@ -19,6 +19,21 @@ enum TimePeriod : String {
     case Day = "1"
     case Week = "7"
     case Month = "30"
+    
+    func getDisplayName() -> String {
+        
+        switch self {
+            
+        case .Day:
+            return "Day"
+            
+        case .Week:
+            return "Week"
+            
+        case .Month:
+            return "Month"            
+        }
+    }
 }
 
 class OperationsManager {

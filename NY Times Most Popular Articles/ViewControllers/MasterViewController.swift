@@ -1,0 +1,202 @@
+//
+//  MasterViewController.swift
+//  NY Times Most Popular Articles
+//
+//  Created by Syed Absar Karim on 8/4/17.
+//  Copyright © 2017 Syed Absar Karim. All rights reserved.
+//
+
+import UIKit
+
+class MasterViewController: UITableViewController, UISearchBarDelegate {
+    
+    var detailViewController: DetailViewController? = nil
+    var objects = [Results]()
+    let operationsManager = OperationsManager()
+    let searchBar = UISearchBar()
+    
+    var defaultTimePeriod = TimePeriod.Week { didSet {
+        refreshControl?.attributedTitle = NSAttributedString(string: self.getFetchingMessage())
+        
+        } }
+    
+    // MARK: - View Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        if let split = splitViewController {
+            let controllers = split.viewControllers
+            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+        }
+        
+        searchBar.showsCancelButton = true
+        searchBar.delegate = self
+        
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(MasterViewController.refresh), for: UIControlEvents.valueChanged)
+        
+        refreshControl?.attributedTitle = NSAttributedString(string: self.getFetchingMessage())
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 150
+        
+        
+        self.loadLatest()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
+        super.viewWillAppear(animated)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - ViewController Methods
+    func loadLatest() {
+        SwiftSpinner.useContainerView(self.view)
+        SwiftSpinner.show(self.getFetchingMessage())
+        operationsManager.getMostViewed(section: "all-sections", timePeriod: self.defaultTimePeriod) { (array, error) in
+            
+            self.objects = array as! [Results]
+            self.tableView.reloadData()
+            SwiftSpinner.hide()
+        }
+    }
+
+    func refresh(sender:AnyObject) {
+        // Code to refresh table view
+        operationsManager.getMostViewed(section: "all-sections", timePeriod: self.defaultTimePeriod) { (array, error) in
+            
+            self.objects = array as! [Results]
+            self.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
+        }
+    }
+    
+    func showTimePeriodFilters() {
+        
+        let alert = UIAlertController(title: nil,
+                                      message: "Filter Time Period By:",
+                                      preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        for timePeriod in EnumUtils.iterateEnum(TimePeriod.self) {
+            print(timePeriod.getDisplayName())
+            
+            
+            let timePeriodAction = UIAlertAction(title: timePeriod.getDisplayName(),
+                                                 style: .default, handler: { action in
+                                                    
+                                                    self.defaultTimePeriod = timePeriod
+                                                    self.loadLatest()
+                                                    
+            })
+            
+            alert.addAction(timePeriodAction)
+            
+        }
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .cancel, handler: nil)
+        
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    func getFetchingMessage() -> String {
+        
+        return "Fetching this \(self.defaultTimePeriod.getDisplayName())'s most viewed"
+    }
+    
+    
+    // MARK: - Button Actions
+    @IBAction func didTapMoreButtonItem(_ sender: Any) {
+        
+        self.showTimePeriodFilters()
+    }
+    
+    @IBAction func didTapSearchButtonItem(_ sender: Any) {
+        
+        self.tableView.tableHeaderView = searchBar
+        searchBar.sizeToFit()
+        searchBar.becomeFirstResponder()
+    }
+    
+    // MARK: - Search Bar
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
+        self.tableView.tableHeaderView = nil
+    }
+    
+    // MARK: - Segues
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            
+            let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+            
+            controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+            controller.navigationItem.leftItemsSupplementBackButton = true
+            
+            if tableView.indexPathForSelectedRow != nil {
+                let object = objects[(tableView.indexPathForSelectedRow?.row)!]
+                controller.detailItem = object
+            } else if objects.count > 0 {
+                //The first news shows by default no item selected and orientation is landscape.
+                controller.detailItem = objects.first
+            }
+            
+        }
+    }
+    
+    // MARK: - Table View
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return objects.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as!  MasterSummaryTableViewCell
+        
+        let object = objects[indexPath.row]
+        cell.titleLabel!.text = object.title
+        cell.byLineLabel.text = object.byline
+        cell.thumbnailView?.image = UIImage(named: "Placeholder")
+        cell.thumbnailView?.layer.cornerRadius = 20
+        
+        
+        if let media = object.media?.first {
+            
+            if  let metadata = media.media_metadata?.first {
+                
+                operationsManager.downloadImage(urlString: (metadata.url)!) { (image, error) in
+                    
+                    DispatchQueue.main.async() { () -> Void in
+                        cell.thumbnailView?.image = image
+                    }
+                    
+                }
+            }
+        }
+        
+        cell.layoutIfNeeded()
+        
+        return cell
+    }
+    
+}
+

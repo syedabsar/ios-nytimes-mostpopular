@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -242,7 +243,20 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Most Popular" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="NY Times Most Popular" id="Zdf-7t-Un8">
+                        <rightBarButtonItems>
+                            <barButtonItem image="Vertical_More" id="fl8-hr-cBZ">
+                                <connections>
+                                    <action selector="didTapMoreButtonItem:" destination="7bK-jq-Zjz" id="0yK-PH-rRU"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="search" id="EUm-xz-YWy">
+                                <connections>
+                                    <action selector="didTapSearchButtonItem:" destination="7bK-jq-Zjz" id="owu-zT-UDV"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
@@ -265,6 +279,9 @@
             <point key="canvasLocation" x="-45" y="129"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Vertical_More" width="7" height="24"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6S0-TO-JiA"/>
     </inferredMetricsTieBreakers>
