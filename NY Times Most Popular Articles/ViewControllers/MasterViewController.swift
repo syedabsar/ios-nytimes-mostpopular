@@ -93,8 +93,13 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         for timePeriod in EnumUtils.iterateEnum(TimePeriod.self) {
             print(timePeriod.getDisplayName())
             
+            var displayName = timePeriod.getDisplayName()
             
-            let timePeriodAction = UIAlertAction(title: timePeriod.getDisplayName(),
+            if self.defaultTimePeriod == timePeriod {
+                displayName = "✓ " + displayName
+            }
+            
+            let timePeriodAction = UIAlertAction(title: displayName,
                                                  style: .default, handler: { action in
                                                     
                                                     self.defaultTimePeriod = timePeriod
