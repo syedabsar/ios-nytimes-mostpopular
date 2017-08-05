@@ -10,17 +10,34 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    // MARK: - Outlets
     @IBOutlet weak var abstractLabel: UILabel!
     @IBOutlet weak var sectionLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var byLineLabel: UILabel!
     @IBOutlet weak var publishDateLabel: UILabel!
+    
+    // MARK: - Properties
     var detailItem: Results?
 
+    // MARK: - View Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        configureView()
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: - ViewController Methods
     func configureView() {
         // Update the user interface for the detail item.
         if detailItem != nil {
-
+            
             self.abstractLabel.text = detailItem?.abstract
             self.sectionLabel.text = detailItem?.section
             self.titleLabel.text = detailItem?.title
@@ -35,17 +52,18 @@ class DetailViewController: UIViewController {
                     OperationsManager().downloadImage(urlString: (metadata.url)!) { (image, error) in
                         
                         DispatchQueue.main.async() { () -> Void in
-                           // cell.thumbnailView?.image = image
+                            // cell.thumbnailView?.image = image
                         }
                         
                     }
                 }
             }
             
-
+            
         }
     }
-
+    
+    // MARK: - Button Actions
     @IBAction func didTapDetailsButton(_ sender: Any) {
         
         let url = URL(string: (detailItem?.url)!)
@@ -55,18 +73,5 @@ class DetailViewController: UIViewController {
         }
         
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        configureView()
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
 

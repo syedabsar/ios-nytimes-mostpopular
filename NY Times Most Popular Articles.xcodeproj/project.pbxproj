@@ -33,6 +33,8 @@
 		1791F9EA1F3600AB0010F0A5 /* EnumUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791F9E91F3600AB0010F0A5 /* EnumUtils.swift */; };
 		1791F9EE1F3607D90010F0A5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791F9EC1F3607D90010F0A5 /* DetailViewController.swift */; };
 		1791F9EF1F3607D90010F0A5 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791F9ED1F3607D90010F0A5 /* MasterViewController.swift */; };
+		1791F9F31F3610AE0010F0A5 /* BusinessLogicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791F9F21F3610AE0010F0A5 /* BusinessLogicHelper.swift */; };
+		17CE11881F3619FE00F6D225 /* BusinessLogicHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CE11871F3619FE00F6D225 /* BusinessLogicHelperTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		1791F9E91F3600AB0010F0A5 /* EnumUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumUtils.swift; sourceTree = "<group>"; };
 		1791F9EC1F3607D90010F0A5 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1791F9ED1F3607D90010F0A5 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		1791F9F21F3610AE0010F0A5 /* BusinessLogicHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessLogicHelper.swift; sourceTree = "<group>"; };
+		17CE11871F3619FE00F6D225 /* BusinessLogicHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessLogicHelperTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,7 @@
 		1718A4161F35A943007E5E8D /* API Engine */ = {
 			isa = PBXGroup;
 			children = (
+				1791F9F21F3610AE0010F0A5 /* BusinessLogicHelper.swift */,
 				177961581F34AC3D00DD0FD6 /* OperationsManager.swift */,
 				1718A3FE1F3595F0007E5E8D /* NetworkController.swift */,
 				1718A4041F359F63007E5E8D /* ConfigurationManager.swift */,
@@ -172,6 +177,7 @@
 		1779612F1F34A91C00DD0FD6 /* NY Times Most Popular ArticlesTests */ = {
 			isa = PBXGroup;
 			children = (
+				17CE11871F3619FE00F6D225 /* BusinessLogicHelperTests.swift */,
 				1718A4001F359B97007E5E8D /* OperationsManagerTests.swift */,
 				177961301F34A91C00DD0FD6 /* NY_Times_Most_Popular_ArticlesTests.swift */,
 				177961321F34A91C00DD0FD6 /* Info.plist */,
@@ -325,6 +331,7 @@
 				1791F9E41F35AA9A0010F0A5 /* SwiftSpinner.swift in Sources */,
 				1718A40C1F35A2FF007E5E8D /* Media_metadata.swift in Sources */,
 				1791F9E81F35BE790010F0A5 /* MasterSummaryTableViewCell.swift in Sources */,
+				1791F9F31F3610AE0010F0A5 /* BusinessLogicHelper.swift in Sources */,
 				1718A4101F35A2FF007E5E8D /* MostViewedResponse.swift in Sources */,
 				1718A40E1F35A2FF007E5E8D /* Media.swift in Sources */,
 				1791F9EA1F3600AB0010F0A5 /* EnumUtils.swift in Sources */,
@@ -342,6 +349,7 @@
 				1718A4131F35A2FF007E5E8D /* Results.swift in Sources */,
 				1718A40F1F35A2FF007E5E8D /* Media.swift in Sources */,
 				1718A4111F35A2FF007E5E8D /* MostViewedResponse.swift in Sources */,
+				17CE11881F3619FE00F6D225 /* BusinessLogicHelperTests.swift in Sources */,
 				1718A40D1F35A2FF007E5E8D /* Media_metadata.swift in Sources */,
 				177961311F34A91C00DD0FD6 /* NY_Times_Most_Popular_ArticlesTests.swift in Sources */,
 				1718A4011F359B97007E5E8D /* OperationsManagerTests.swift in Sources */,

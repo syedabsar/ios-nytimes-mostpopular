@@ -10,8 +10,13 @@ import UIKit
 
 class MasterViewController: UITableViewController, UISearchBarDelegate {
     
+    // MARK: - Properties
     var detailViewController: DetailViewController? = nil
     var objects = [Results]()
+    var filteredObjects = [Results]()
+    
+    var searchMode = false
+    
     let operationsManager = OperationsManager()
     let searchBar = UISearchBar()
     
@@ -31,6 +36,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         }
         
         searchBar.showsCancelButton = true
+        searchBar.returnKeyType = UIReturnKeyType.done
         searchBar.delegate = self
         
         refreshControl = UIRefreshControl()
@@ -67,7 +73,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
             SwiftSpinner.hide()
         }
     }
-
+    
     func refresh(sender:AnyObject) {
         // Code to refresh table view
         operationsManager.getMostViewed(section: "all-sections", timePeriod: self.defaultTimePeriod) { (array, error) in
@@ -80,8 +86,8 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     
     func showTimePeriodFilters() {
         
-        let alert = UIAlertController(title: nil,
-                                      message: "Filter Time Period By:",
+        let alert = UIAlertController(title: "See most popular items for",
+                                      message: nil,
                                       preferredStyle: UIAlertControllerStyle.actionSheet)
         
         for timePeriod in EnumUtils.iterateEnum(TimePeriod.self) {
@@ -126,6 +132,12 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     
     @IBAction func didTapSearchButtonItem(_ sender: Any) {
         
+        if self.searchMode == true {
+            searchBarCancelButtonClicked(self.searchBar)
+            return
+        }
+        self.filteredObjects = self.objects
+        self.searchMode = true
         self.tableView.tableHeaderView = searchBar
         searchBar.sizeToFit()
         searchBar.becomeFirstResponder()
@@ -134,9 +146,24 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     // MARK: - Search Bar
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
+        self.searchMode = false
         searchBar.resignFirstResponder()
         self.tableView.tableHeaderView = nil
+        self.tableView.reloadData()
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        self.filteredObjects = BusinessLogicHelper.filterBySearchKeywords(searchKeyword: searchText, resultsArray: self.objects)
+        
+        self.tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
+    }
+    
     
     // MARK: - Segues
     
@@ -166,13 +193,14 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        
+        return self.searchMode ? filteredObjects.count : objects.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as!  MasterSummaryTableViewCell
         
-        let object = objects[indexPath.row]
+        let object = self.searchMode ? filteredObjects[indexPath.row] : objects[indexPath.row]
         cell.titleLabel!.text = object.title
         cell.byLineLabel.text = object.byline
         cell.thumbnailView?.image = UIImage(named: "Placeholder")

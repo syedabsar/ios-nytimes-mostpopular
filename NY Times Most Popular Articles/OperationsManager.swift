@@ -8,34 +8,6 @@
 
 import UIKit
 
-/**
-Number of days `1 | 7 | 30 ` corresponds to a day, a week, or a month of content.
- 
- - Parameter name: time-period.
- - Used in: path.
- - type: string.
- */
-enum TimePeriod : String {
-    case Day = "1"
-    case Week = "7"
-    case Month = "30"
-    
-    func getDisplayName() -> String {
-        
-        switch self {
-            
-        case .Day:
-            return "Day"
-            
-        case .Week:
-            return "Week"
-            
-        case .Month:
-            return "Month"            
-        }
-    }
-}
-
 class OperationsManager {
     
     public func downloadImage(urlString : String, completionHandler: @escaping (UIImage?, Error?) -> Void) {
