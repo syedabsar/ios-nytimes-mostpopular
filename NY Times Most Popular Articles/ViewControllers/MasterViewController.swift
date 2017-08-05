@@ -208,6 +208,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         let object = self.searchMode ? filteredObjects[indexPath.row] : objects[indexPath.row]
         cell.titleLabel!.text = object.title
         cell.byLineLabel.text = object.byline
+        cell.publishDateLabel.text = "🗓 "+object.published_date!
         cell.thumbnailView?.image = UIImage(named: "Placeholder")
         cell.thumbnailView?.layer.cornerRadius = 20
         

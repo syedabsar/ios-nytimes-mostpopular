@@ -176,7 +176,7 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="149.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nYv-5M-2JA">
@@ -231,6 +231,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="byLineLabel" destination="pxN-a7-riU" id="v2J-Nl-ceJ"/>
+                                    <outlet property="publishDateLabel" destination="9tA-1U-dJ1" id="psD-HR-aDq"/>
                                     <outlet property="thumbnailView" destination="nYv-5M-2JA" id="bK6-Vn-cqi"/>
                                     <outlet property="titleLabel" destination="obq-ZT-5FR" id="sum-Zi-IQL"/>
                                     <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="showDetail" id="6S0-TO-JiA"/>

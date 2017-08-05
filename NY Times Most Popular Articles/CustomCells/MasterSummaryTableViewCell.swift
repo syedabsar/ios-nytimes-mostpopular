@@ -13,6 +13,7 @@ class MasterSummaryTableViewCell: UITableViewCell {
     @IBOutlet weak var thumbnailView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var byLineLabel: UILabel!
+    @IBOutlet weak var publishDateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
