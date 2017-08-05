@@ -82,6 +82,11 @@ public class Results {
 		if (dictionary["per_facet"] != nil) { per_facet = Per_facet.modelsFromDictionaryArray(array: dictionary["per_facet"] as! NSArray) }
 		if (dictionary["geo_facet"] != nil) { geo_facet = Geo_facet.modelsFromDictionaryArray(array: dictionary["geo_facet"] as! NSArray) }
 		if (dictionary["media"] != nil) { media = Media.modelsFromDictionaryArray(array: dictionary["media"] as! NSArray) } */
+        
+        let media = dictionary["media"]
+        if media is Array<Any> {
+            self.media = Media.modelsFromDictionaryArray(array: dictionary["media"] as! NSArray)
+        }
 	}
 
 		

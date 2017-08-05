@@ -11,6 +11,17 @@ import Alamofire
 
 class NetworkController {
     
+    func getData(urlString : String, completionHandler: @escaping (Data?, Error?) -> Void) {
+
+        Alamofire.request(urlString).responseData { response in
+
+            if let data = response.data {
+                completionHandler(data, response.error)
+            }
+        }
+    }
+
+    
     public func getJSON(urlString : String, completionHandler: @escaping (AnyObject, Error?) -> Void) {
         Alamofire.request(urlString).responseJSON { response in
             

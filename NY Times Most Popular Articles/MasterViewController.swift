@@ -27,15 +27,32 @@ class MasterViewController: UITableViewController {
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
+        
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Fetching most viewed")
+        refreshControl?.addTarget(self, action: #selector(MasterViewController.refresh), for: UIControlEvents.valueChanged)
+        
+        
+        SwiftSpinner.useContainerView(self.view)
+        self.loadLatest()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
-        
-        self.loadLatest()
     }
     
+    func refresh(sender:AnyObject) {
+        // Code to refresh table view
+        operationsManager.getMostViewed(section: "all-sections", timePeriod: TimePeriod.Day) { (array, error) in
+            
+            self.objects = array as! [Results]
+            self.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
+        }
+
+    }
+
     
     func loadLatest() {
         SwiftSpinner.show("Fetching most viewed")
@@ -52,17 +69,11 @@ class MasterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-//    func insertNewObject(_ sender: Any) {
-//        objects.insert(NSDate(), at: 0)
-//        let indexPath = IndexPath(row: 0, section: 0)
-//        tableView.insertRows(at: [indexPath], with: .automatic)
-//    }
-
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
-            if let indexPath = tableView.indexPathForSelectedRow {
+            if tableView.indexPathForSelectedRow != nil {
                 let object = NSDate() //objects[indexPath.row] as! NSDate
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = object
@@ -85,8 +96,33 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
+        cell.accessoryType = .disclosureIndicator
+        
         let object = objects[indexPath.row]
         cell.textLabel!.text = object.title
+        
+        cell.imageView?.image = UIImage(named: "Placeholder")
+        cell.imageView?.layer.cornerRadius = 20
+        
+        cell.imageView?.clipsToBounds = true
+        
+        if let media = object.media?.first {
+            
+            if  let metadata = media.media_metadata?.first {
+            
+                operationsManager.downloadImage(urlString: (metadata.url)!) { (image, error) in
+                    
+                    DispatchQueue.main.async() { () -> Void in
+                        cell.imageView?.image = image
+                    }
+                    
+                }
+
+            }
+
+        }
+        
+        
         return cell
     }
 

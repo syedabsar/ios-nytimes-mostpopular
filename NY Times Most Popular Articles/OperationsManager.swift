@@ -23,6 +23,14 @@ enum TimePeriod : String {
 
 class OperationsManager {
     
+    public func downloadImage(urlString : String, completionHandler: @escaping (UIImage?, Error?) -> Void) {
+    
+        NetworkController().getData(urlString: urlString, completionHandler: {data, err in
+            
+            completionHandler(UIImage(data: data!), err)
+        })
+    }
+    
     public func getMostViewed(section : String, timePeriod : TimePeriod, completionHandler: @escaping (Array<Any>?, Error?) -> Void) {
     
         let urlPath = ConfigurationManager().apiPathMostViewed(section: section, timePeriod: timePeriod.rawValue)
