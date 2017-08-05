@@ -28,12 +28,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Set navigation bar ItemButton tint colour
         UIBarButtonItem.appearance().tintColor = UIColor.white
         
-        
         //Set navigation bar Back button tint colour
         UINavigationBar.appearance().tintColor = UIColor.white
         
         
         
+        UIButton.appearance().backgroundColor = themeColor
+
+        UIButton.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).backgroundColor = nil
+        
+        UIButton.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).tintColor = nil
+
+       // UIButton.appearance(whenContainedInInstancesOf: [UIView.self]).tintColor = UIColor.white
         
         let splitViewController = window!.rootViewController as! UISplitViewController
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController

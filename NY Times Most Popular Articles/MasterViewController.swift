@@ -33,6 +33,10 @@ class MasterViewController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(MasterViewController.refresh), for: UIControlEvents.valueChanged)
         
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 150
+
+        
         SwiftSpinner.useContainerView(self.view)
         self.loadLatest()
     }
@@ -74,7 +78,7 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if tableView.indexPathForSelectedRow != nil {
-                let object = NSDate() //objects[indexPath.row] as! NSDate
+                let object = objects[(tableView.indexPathForSelectedRow?.row)!]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
@@ -117,6 +121,7 @@ class MasterViewController: UITableViewController {
             }
         }
         
+        cell.layoutIfNeeded()
         
         return cell
     }
