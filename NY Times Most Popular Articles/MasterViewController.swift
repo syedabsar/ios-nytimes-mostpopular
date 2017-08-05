@@ -94,17 +94,14 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-
-        cell.accessoryType = .disclosureIndicator
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as!  MasterSummaryTableViewCell
         
         let object = objects[indexPath.row]
-        cell.textLabel!.text = object.title
+        cell.titleLabel!.text = object.title
+        cell.byLineLabel.text = object.byline
+        cell.thumbnailView?.image = UIImage(named: "Placeholder")
+        cell.thumbnailView?.layer.cornerRadius = 20
         
-        cell.imageView?.image = UIImage(named: "Placeholder")
-        cell.imageView?.layer.cornerRadius = 20
-        
-        cell.imageView?.clipsToBounds = true
         
         if let media = object.media?.first {
             
@@ -113,31 +110,15 @@ class MasterViewController: UITableViewController {
                 operationsManager.downloadImage(urlString: (metadata.url)!) { (image, error) in
                     
                     DispatchQueue.main.async() { () -> Void in
-                        cell.imageView?.image = image
+                        cell.thumbnailView?.image = image
                     }
                     
                 }
-
             }
-
         }
         
         
         return cell
-    }
-
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-        }
     }
 
 

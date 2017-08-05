@@ -31,6 +31,7 @@
 		177961561F34AA5300DD0FD6 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 177961541F34AA5300DD0FD6 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		177961591F34AC3D00DD0FD6 /* OperationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177961581F34AC3D00DD0FD6 /* OperationsManager.swift */; };
 		1791F9E41F35AA9A0010F0A5 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791F9E31F35AA9A0010F0A5 /* SwiftSpinner.swift */; };
+		1791F9E81F35BE790010F0A5 /* MasterSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791F9E71F35BE790010F0A5 /* MasterSummaryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		177961541F34AA5300DD0FD6 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		177961581F34AC3D00DD0FD6 /* OperationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationsManager.swift; sourceTree = "<group>"; };
 		1791F9E31F35AA9A0010F0A5 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
+		1791F9E71F35BE790010F0A5 /* MasterSummaryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterSummaryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				1718A4071F35A2FF007E5E8D /* Web Service Models */,
 				1791F9E21F35AA9A0010F0A5 /* Utils */,
 				1718A4141F35A908007E5E8D /* ViewControllers */,
+				1791F9E61F35BE370010F0A5 /* CustomCells */,
 				1718A4151F35A91B007E5E8D /* Storyboards */,
 				177961221F34A91C00DD0FD6 /* Assets.xcassets */,
 			);
@@ -197,6 +200,14 @@
 				177961541F34AA5300DD0FD6 /* Alamofire.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1791F9E61F35BE370010F0A5 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				1791F9E71F35BE790010F0A5 /* MasterSummaryTableViewCell.swift */,
+			);
+			path = CustomCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +322,7 @@
 				1779611C1F34A91C00DD0FD6 /* MasterViewController.swift in Sources */,
 				1791F9E41F35AA9A0010F0A5 /* SwiftSpinner.swift in Sources */,
 				1718A40C1F35A2FF007E5E8D /* Media_metadata.swift in Sources */,
+				1791F9E81F35BE790010F0A5 /* MasterSummaryTableViewCell.swift in Sources */,
 				1718A4101F35A2FF007E5E8D /* MostViewedResponse.swift in Sources */,
 				1718A40E1F35A2FF007E5E8D /* Media.swift in Sources */,
 				1779611A1F34A91C00DD0FD6 /* AppDelegate.swift in Sources */,
