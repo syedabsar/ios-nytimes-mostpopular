@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 open class AZDropdownMenuBaseCell : UITableViewCell, AZDropdownMenuCellProtocol {
     

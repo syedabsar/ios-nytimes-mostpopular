@@ -1,0 +1,18 @@
+PODS:
+  - Alamofire (4.5.0)
+  - AZDropdownMenu (1.1.2)
+  - SwiftSpinner (1.3.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.4)
+  - AZDropdownMenu
+  - SwiftSpinner
+
+SPEC CHECKSUMS:
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  AZDropdownMenu: 411c1b445fd29bb1e56b219131aaf294ba21b9b6
+  SwiftSpinner: c249fffed3e74b5f3e6492dcc05d6bc1525a8220
+
+PODFILE CHECKSUM: 84df9ab361e5f017c9d6247054aea03c457536e0
+
+COCOAPODS: 1.3.0

@@ -218,12 +218,12 @@ open class AZDropdownMenu: UIView {
         }
         menuView.dataSource = self
         menuView.delegate = self
-        menuView.isScrollEnabled = true
+        menuView.isScrollEnabled = false
         menuView.accessibilityIdentifier = "MENU"
         menuView.separatorColor = menuConfig?.menuSeparatorColor
-//        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(AZDropdownMenu.handlePan(gestureRecognizer:)))
-//        panGesture.delegate = self
-//        menuView.addGestureRecognizer(panGesture)
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(AZDropdownMenu.handlePan(gestureRecognizer:)))
+        panGesture.delegate = self
+        menuView.addGestureRecognizer(panGesture)
         addSubview(menuView)
     }
 
