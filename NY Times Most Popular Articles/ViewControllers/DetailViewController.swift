@@ -18,6 +18,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var publishDateLabel: UILabel!
     @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var moreDetailsButton: UIButton!
+    @IBOutlet weak var keywordsLabel: UILabel!
     
     // MARK: - Properties
     var detailItem: MostViewedResults?
@@ -44,9 +45,11 @@ class DetailViewController: UIViewController {
             self.sectionLabel.text = detailItem?.section
             self.titleLabel.text = detailItem?.title
             self.byLineLabel.text = detailItem?.byline
+            self.keywordsLabel.text = detailItem?.adx_keywords
             self.publishDateLabel.text = "🗓 "+(detailItem?.published_date)!
             self.moreDetailsButton.setTitle("See Full "+(detailItem?.type)!, for: .normal)
             
+           self.previewImageView?.image = UIImage(named: "Placeholder")
             if let media = detailItem?.media?.first {
                 
                 if  let metadata = media.media_metadata?.first {

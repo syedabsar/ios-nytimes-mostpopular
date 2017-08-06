@@ -92,6 +92,12 @@
                                             <action selector="didTapDetailsButton:" destination="JEX-9P-axG" eventType="touchUpInside" id="FNO-oZ-HLK"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Syed Absar Karim on 8/5/17Created by Syed Absar Karim on 8/5/17" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tge-n5-UiW">
+                                        <rect key="frame" x="207" y="190" width="148" height="142"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbJ-0a-bPc">
                                         <rect key="frame" x="20" y="340" width="343" height="176"/>
                                         <constraints>
@@ -105,7 +111,9 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="wK1-UL-1fl" firstAttribute="top" secondItem="ddu-ir-408" secondAttribute="top" constant="63" id="0sx-yj-IbK"/>
+                                    <constraint firstItem="tge-n5-UiW" firstAttribute="leading" secondItem="wK1-UL-1fl" secondAttribute="trailing" constant="19" id="6Jx-Lt-BXx"/>
                                     <constraint firstItem="xbJ-0a-bPc" firstAttribute="top" secondItem="uhM-Lu-KAI" secondAttribute="bottom" constant="282" id="6l5-23-hzb"/>
+                                    <constraint firstAttribute="trailing" secondItem="tge-n5-UiW" secondAttribute="trailing" constant="28" id="8ia-TF-2TU"/>
                                     <constraint firstItem="GMJ-EQ-DWC" firstAttribute="trailing" secondItem="ddu-ir-408" secondAttribute="trailing" id="92N-h7-Jc8"/>
                                     <constraint firstItem="0tx-Yi-Har" firstAttribute="top" secondItem="Gre-3w-HgP" secondAttribute="top" constant="34" id="9JH-tl-yVn"/>
                                     <constraint firstItem="xbJ-0a-bPc" firstAttribute="leading" secondItem="PXQ-7M-5xv" secondAttribute="leading" id="DUv-JT-PLh"/>
@@ -118,6 +126,8 @@
                                     <constraint firstAttribute="bottom" secondItem="PXQ-7M-5xv" secondAttribute="bottom" constant="49" id="VbO-B6-CD0"/>
                                     <constraint firstItem="0tx-Yi-Har" firstAttribute="trailing" secondItem="GMJ-EQ-DWC" secondAttribute="trailing" id="XXT-t0-qUB"/>
                                     <constraint firstItem="wK1-UL-1fl" firstAttribute="top" secondItem="GMJ-EQ-DWC" secondAttribute="bottom" constant="44" id="Z5e-zL-YaW"/>
+                                    <constraint firstItem="tge-n5-UiW" firstAttribute="top" secondItem="wK1-UL-1fl" secondAttribute="top" id="c9i-SV-MH1"/>
+                                    <constraint firstItem="xbJ-0a-bPc" firstAttribute="top" secondItem="tge-n5-UiW" secondAttribute="bottom" constant="8" symbolic="YES" id="dQz-6B-raJ"/>
                                     <constraint firstAttribute="trailing" secondItem="0tx-Yi-Har" secondAttribute="trailing" constant="20" id="fde-np-y1J"/>
                                     <constraint firstItem="GMJ-EQ-DWC" firstAttribute="leading" secondItem="wK1-UL-1fl" secondAttribute="leading" id="gIX-2Y-K3j"/>
                                     <constraint firstItem="uhM-Lu-KAI" firstAttribute="top" secondItem="GMJ-EQ-DWC" secondAttribute="bottom" constant="-109" id="hgo-mB-QpM"/>
@@ -146,6 +156,7 @@
                     <connections>
                         <outlet property="abstractLabel" destination="xbJ-0a-bPc" id="ZfS-mz-gQn"/>
                         <outlet property="byLineLabel" destination="ddu-ir-408" id="tkf-oN-Llz"/>
+                        <outlet property="keywordsLabel" destination="tge-n5-UiW" id="Jxn-xf-6oh"/>
                         <outlet property="moreDetailsButton" destination="PXQ-7M-5xv" id="EuP-Sg-9ac"/>
                         <outlet property="previewImageView" destination="wK1-UL-1fl" id="elc-uz-CJi"/>
                         <outlet property="publishDateLabel" destination="uhM-Lu-KAI" id="BBW-fm-kd6"/>

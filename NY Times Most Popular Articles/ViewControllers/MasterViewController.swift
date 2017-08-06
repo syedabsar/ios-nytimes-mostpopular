@@ -166,10 +166,10 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     
     @IBAction func didTapLeftButtonItem(_ sender: Any) {
         
-        if (self.menu?.isDescendant(of: (self.navigationController?.view)!) == true) {
+        if (self.menu?.isDescendant(of: self.view) == true) {
             self.menu?.hideMenu()
         } else {
-            self.menu?.showMenuFromView((self.navigationController?.view)!)
+            self.menu?.showMenuFromView(self.view)
         }
 
     }
