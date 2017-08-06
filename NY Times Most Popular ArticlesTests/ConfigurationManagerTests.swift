@@ -24,7 +24,7 @@ class ConfigurationManagerTests: XCTestCase {
     func testApiPathMostViewed() {
         // Given a section and time period, the API path should always be returned.
         
-        XCTAssertNotNil(ConfigurationManager.apiPathMostViewed(section: "all-sections", timePeriod: "1"))
+        XCTAssertNotNil(ConfigurationManager.apiPathMostViewed(section: "all-sections", timePeriod: "1", offset: 0))
     }
     
     func testApiPathSectionsListAvailable() {

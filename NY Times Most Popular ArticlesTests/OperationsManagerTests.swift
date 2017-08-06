@@ -35,7 +35,7 @@ class OperationsManagerTests: XCTestCase {
         
         self.measure {
             
-            OperationsManager().getMostViewed(section: "all-sections", timePeriod: TimePeriod.Day, completionHandler: { obj, err in
+            OperationsManager().getMostViewed(section: "all-sections", timePeriod: TimePeriod.Day, offset: 0, completionHandler: { obj, err in
                 
                 expectation.fulfill()
             })

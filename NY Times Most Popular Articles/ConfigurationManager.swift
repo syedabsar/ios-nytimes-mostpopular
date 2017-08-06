@@ -4,9 +4,8 @@
 //
 //  Created by Syed Absar Karim on 8/5/17.
 //  Copyright © 2017 Syed Absar Karim. All rights reserved.
-//
-//
-//import Foundation
+
+import Foundation
 
 class ConfigurationManager {
 
@@ -14,7 +13,7 @@ class ConfigurationManager {
     static let host = "api.nytimes.com"
     static let basePath = "/svc/mostpopular/v2"
     static let path = "/mostviewed/{section}/{time-period}.json"
-    static let apiKey = "4820a19587ef4514a6e6a39d90bf1ef9"
+    static let apiKey = "NDgyMGExOTU4N2VmNDUxNGE2ZTZhMzlkOTBiZjFlZjk="
 
     
     public static func apiPathMostViewed(section : String, timePeriod: String, offset : Int) -> String {
@@ -32,6 +31,11 @@ class ConfigurationManager {
     }
     
     private static  func setApiKey(path: String) -> String {
-        return path + "?api-key="+apiKey
+        
+        let base64data = Data(base64Encoded: apiKey)
+        
+        let apiKeyString = String(data: base64data!, encoding: .utf8)!
+
+        return path + "?api-key="+apiKeyString
     }
 }
