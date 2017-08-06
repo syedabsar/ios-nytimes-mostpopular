@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:NY Times Most Popular Articles.xcodeproj">
+      location = "group:/Users/syedabsar/Dropbox/NY Times Most Popular Articles/NYTimes_MostPopularArticles.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

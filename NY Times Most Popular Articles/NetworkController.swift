@@ -34,12 +34,6 @@ class NetworkController  {
                 print("JSON: \(json)") // serialized json response
                 completionHandler(json as AnyObject, response.error)
             }
-            
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                print("Data: \(utf8Text)") // original server data as UTF8 string
-                
-               // completionHandler(data, response.error)
-            }
         }
         
     }

@@ -19,6 +19,10 @@ class ConfigurationManager {
     
     public static func apiPathMostViewed(section : String, timePeriod: String) -> String {
 
+        if section.characters.count == 0 || timePeriod.characters.count == 0 {
+            assertionFailure("section and time period are needed.")
+        }
+        
         return setApiKey(path: scheme + host + basePath + "/mostviewed/\(section)/\(timePeriod).json")
     }
     

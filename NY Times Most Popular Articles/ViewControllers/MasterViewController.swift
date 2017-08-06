@@ -264,13 +264,13 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as!  MasterSummaryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.MasterViewController.SummaryCellIdentifier, for: indexPath) as!  MasterSummaryTableViewCell
         
         let object = self.searchMode ? self.filteredSearchResultList?[indexPath.row] : self.mostViewedItemsList?[indexPath.row]
         cell.titleLabel!.text = object?.title
         cell.byLineLabel.text = object?.byline
         cell.publishDateLabel.text = "🗓 "+(object?.published_date!)!
-        cell.thumbnailView?.image = UIImage(named: "Placeholder")
+        cell.thumbnailView?.image = UIImage(named: Constants.MasterViewController.PlaceholderImageName)
         cell.thumbnailView?.layer.cornerRadius = 20
         
         

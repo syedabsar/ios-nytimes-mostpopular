@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import NYTimes_MostPopularArticles
 
 class BusinessLogicHelperTests: XCTestCase {
     
@@ -38,14 +39,10 @@ class BusinessLogicHelperTests: XCTestCase {
     func testSearchFilterWithEmptyKeyword() {
     //Given an array and empty search string, the returned array should be same number of items.
         
-        
+        let array = BusinessLogicHelper.filterBySearchKeywords(searchKeyword: "", resultsArray: [])
+     
+        XCTAssertEqual(array.count, 0)
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
     
 }

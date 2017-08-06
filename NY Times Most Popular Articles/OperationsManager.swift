@@ -41,7 +41,6 @@ class OperationsManager {
             let responseModel = MostViewedResponse(dictionary: obj as! NSDictionary)
             
             completionHandler(responseModel?.results, err)
-            
         })
     }
 

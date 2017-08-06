@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import NYTimes_MostPopularArticles
 
 class OperationsManagerTests: XCTestCase {
     

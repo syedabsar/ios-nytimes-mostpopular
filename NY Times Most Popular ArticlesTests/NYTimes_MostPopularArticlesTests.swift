@@ -7,9 +7,9 @@
 //
 
 import XCTest
-@testable import NY_Times_Most_Popular_Articles
+@testable import NYTimes_MostPopularArticles
 
-class NY_Times_Most_Popular_ArticlesTests: XCTestCase {
+class NYTimes_MostPopularArticlesTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
