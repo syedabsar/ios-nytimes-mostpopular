@@ -14,8 +14,8 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     
     // MARK: - Properties
     var detailViewController: DetailViewController? = nil
-    var objects : [MostViewedResults]? = nil
-    var filteredObjects : [MostViewedResults]? = nil
+    var mostViewedItemsList : [MostViewedResults]? = nil
+    var filteredSearchResultList : [MostViewedResults]? = nil
     
     var searchMode = false
     
@@ -31,30 +31,35 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         
         } }
     
+    
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // Configure Split Controller
         if let split = splitViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
+        // Configure Search Bar
         searchBar.showsCancelButton = true
         searchBar.returnKeyType = UIReturnKeyType.done
         searchBar.delegate = self
         
+        // Configure Refresh Control
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(MasterViewController.refresh), for: UIControlEvents.valueChanged)
         
         refreshControl?.attributedTitle = NSAttributedString(string: self.getFetchingMessage())
         
+        // Configure Table View
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 150
         
-        
-        self.loadLatest()
+        // Load Web Service Items
+        self.loadLatestItems()
     }
     
     
@@ -69,18 +74,18 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     }
     
     // MARK: - ViewController Methods
-    func loadLatest() {
+    func loadLatestItems() {
         SwiftSpinner.useContainerView(self.view)
         SwiftSpinner.show(self.getFetchingMessage())
         operationsManager.getMostViewed(section: self.defaultSection, timePeriod: self.defaultTimePeriod) { (array, error) in
             
-            self.objects = array
+            self.mostViewedItemsList = array
             self.tableView.reloadData()
-            self.loadSections()
+            self.loadSectionsList()
         }
     }
     
-    func loadSections() {
+    func loadSectionsList() {
     
         if self.sections != nil {
             SwiftSpinner.hide()
@@ -99,7 +104,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
                 self.menu?.cellTapHandler = { indexPath in
 
                     self.defaultSection = (sectionNamesArray?[indexPath.row])!
-                    self.loadLatest()
+                    self.loadLatestItems()
                 }
 
             })
@@ -111,7 +116,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         // Code to refresh table view
         operationsManager.getMostViewed(section: "all-sections", timePeriod: self.defaultTimePeriod) { (array, error) in
             
-            self.objects = array
+            self.mostViewedItemsList = array
             self.refreshControl?.endRefreshing()
             self.tableView.reloadData()
         }
@@ -125,17 +130,12 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         
         for timePeriod in EnumUtils.iterateEnum(TimePeriod.self) {
             
-            var displayName = timePeriod.getDisplayName()
             
-            if self.defaultTimePeriod == timePeriod {
-                displayName = "✓ " + displayName
-            }
-            
-            let timePeriodAction = UIAlertAction(title: displayName,
+            let timePeriodAction = UIAlertAction(title: self.getDisplayNameForTimePeriod(timePeriod: timePeriod),
                                                  style: .default, handler: { action in
                                                     
                                                     self.defaultTimePeriod = timePeriod
-                                                    self.loadLatest()
+                                                    self.loadLatestItems()
                                                     
             })
             
@@ -153,9 +153,18 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     }
     
     
+    private func getDisplayNameForTimePeriod(timePeriod: TimePeriod) -> String {
     
+        var displayName = timePeriod.getDisplayName()
+        
+        if self.defaultTimePeriod == timePeriod {
+            displayName = "✓ " + displayName
+        }
+
+        return displayName
+    }
     
-    func getFetchingMessage() -> String {
+    private func getFetchingMessage() -> String {
         
         return "Fetching this \(self.defaultTimePeriod.getDisplayName())'s most viewed in \(self.defaultSection)"
     }
@@ -185,7 +194,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
             searchBarCancelButtonClicked(self.searchBar)
             return
         }
-        self.filteredObjects = self.objects
+        self.filteredSearchResultList = self.mostViewedItemsList
         self.searchMode = true
         self.tableView.tableHeaderView = searchBar
         searchBar.sizeToFit()
@@ -203,7 +212,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        self.filteredObjects = BusinessLogicHelper.filterBySearchKeywords(searchKeyword: searchText, resultsArray: self.objects!)
+        self.filteredSearchResultList = BusinessLogicHelper.filterBySearchKeywords(searchKeyword: searchText, resultsArray: self.mostViewedItemsList!)
         
         self.tableView.reloadData()
     }
@@ -225,11 +234,11 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
             controller.navigationItem.leftItemsSupplementBackButton = true
             
             if tableView.indexPathForSelectedRow != nil {
-                let object = objects?[(tableView.indexPathForSelectedRow?.row)!]
+                let object = self.mostViewedItemsList?[(tableView.indexPathForSelectedRow?.row)!]
                 controller.detailItem = object
-            } else if (objects?.count)! > 0 {
+            } else if (self.mostViewedItemsList?.count)! > 0 {
                 //The first news shows by default no item selected and orientation is landscape.
-                controller.detailItem = objects?.first
+                controller.detailItem = self.mostViewedItemsList?.first
             }
             
         }
@@ -243,12 +252,12 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if self.searchMode && self.filteredObjects != nil {
-            return (self.filteredObjects?.count)!
+        if self.searchMode && self.filteredSearchResultList != nil {
+            return (self.filteredSearchResultList?.count)!
         }
 
-        if self.searchMode == false && self.objects != nil {
-            return (self.objects?.count)!
+        if self.searchMode == false && self.mostViewedItemsList != nil {
+            return (self.mostViewedItemsList?.count)!
         }
         
         return 0
@@ -257,7 +266,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as!  MasterSummaryTableViewCell
         
-        let object = self.searchMode ? filteredObjects?[indexPath.row] : objects?[indexPath.row]
+        let object = self.searchMode ? self.filteredSearchResultList?[indexPath.row] : self.mostViewedItemsList?[indexPath.row]
         cell.titleLabel!.text = object?.title
         cell.byLineLabel.text = object?.byline
         cell.publishDateLabel.text = "🗓 "+(object?.published_date!)!
