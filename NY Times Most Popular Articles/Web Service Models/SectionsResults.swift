@@ -12,28 +12,25 @@ import Foundation
  
 /* For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-public class MostViewedResponse {
-	public var status : String?
-	public var copyright : String?
-	public var num_results : Int?
-	public var results : Array<MostViewedResults>?
+public class SectionsResults {
+	public var name : String?
 
 /**
     Returns an array of models based on given dictionary.
     
     Sample usage:
-    let json4Swift_Base_list = Json4Swift_Base.modelsFromDictionaryArray(someDictionaryArrayFromJSON)
+    let results_list = Results.modelsFromDictionaryArray(someDictionaryArrayFromJSON)
 
     - parameter array:  NSArray from JSON dictionary.
 
-    - returns: Array of Json4Swift_Base Instances.
+    - returns: Array of Results Instances.
 */
-    public class func modelsFromDictionaryArray(array:NSArray) -> [MostViewedResponse]
+    public class func modelsFromDictionaryArray(array:NSArray) -> [SectionsResults]
     {
-        var models:[MostViewedResponse] = []
+        var models:[SectionsResults] = []
         for item in array
         {
-            models.append(MostViewedResponse(dictionary: item as! NSDictionary)!)
+            models.append(SectionsResults(dictionary: item as! NSDictionary)!)
         }
         return models
     }
@@ -42,18 +39,15 @@ public class MostViewedResponse {
     Constructs the object based on the given dictionary.
     
     Sample usage:
-    let json4Swift_Base = Json4Swift_Base(someDictionaryFromJSON)
+    let results = Results(someDictionaryFromJSON)
 
     - parameter dictionary:  NSDictionary from JSON.
 
-    - returns: Json4Swift_Base Instance.
+    - returns: Results Instance.
 */
 	required public init?(dictionary: NSDictionary) {
 
-		status = dictionary["status"] as? String
-		copyright = dictionary["copyright"] as? String
-		num_results = dictionary["num_results"] as? Int
-		if (dictionary["results"] != nil) { results = MostViewedResults.modelsFromDictionaryArray(array: dictionary["results"] as! NSArray) }
+		name = dictionary["name"] as? String
 	}
 
 		
@@ -66,9 +60,7 @@ public class MostViewedResponse {
 
 		let dictionary = NSMutableDictionary()
 
-		dictionary.setValue(self.status, forKey: "status")
-		dictionary.setValue(self.copyright, forKey: "copyright")
-		dictionary.setValue(self.num_results, forKey: "num_results")
+		dictionary.setValue(self.name, forKey: "name")
 
 		return dictionary
 	}

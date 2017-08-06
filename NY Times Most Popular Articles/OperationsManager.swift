@@ -18,9 +18,23 @@ class OperationsManager {
         })
     }
     
+    public func getSectionsList(completionHandler: @escaping (Array<Any>?, Error?) -> Void) {
+    
+        let urlPath = ConfigurationManager.apiPathSectionsList()
+
+        NetworkController().getJSON(urlString: urlPath, completionHandler: {obj, err in
+            
+            let responseModel = SectionsResponse(dictionary: obj as! NSDictionary)
+            
+            completionHandler(responseModel?.results, err)
+            
+        })
+
+    }
+    
     public func getMostViewed(section : String, timePeriod : TimePeriod, completionHandler: @escaping (Array<Any>?, Error?) -> Void) {
     
-        let urlPath = ConfigurationManager().apiPathMostViewed(section: section, timePeriod: timePeriod.rawValue)
+        let urlPath = ConfigurationManager.apiPathMostViewed(section: section, timePeriod: timePeriod.rawValue)
         
         NetworkController().getJSON(urlString: urlPath, completionHandler: {obj, err in
             

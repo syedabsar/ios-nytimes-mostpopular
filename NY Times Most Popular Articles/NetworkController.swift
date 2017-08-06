@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class NetworkController {
+class NetworkController  {
     
     func getData(urlString : String, completionHandler: @escaping (Data?, Error?) -> Void) {
 

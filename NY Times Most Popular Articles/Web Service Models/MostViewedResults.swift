@@ -12,7 +12,7 @@ import Foundation
  
 /* For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-public class Results {
+public class MostViewedResults {
 	public var url : String?
 	public var adx_keywords : String?
 	public var column : String?
@@ -42,12 +42,12 @@ public class Results {
 
     - returns: Array of Results Instances.
 */
-    public class func modelsFromDictionaryArray(array:NSArray) -> [Results]
+    public class func modelsFromDictionaryArray(array:NSArray) -> [MostViewedResults]
     {
-        var models:[Results] = []
+        var models:[MostViewedResults] = []
         for item in array
         {
-            models.append(Results(dictionary: item as! NSDictionary)!)
+            models.append(MostViewedResults(dictionary: item as! NSDictionary)!)
         }
         return models
     }
@@ -81,7 +81,7 @@ public class Results {
 		org_facet = dictionary["org_facet"] as? String
 		if (dictionary["per_facet"] != nil) { per_facet = Per_facet.modelsFromDictionaryArray(array: dictionary["per_facet"] as! NSArray) }
 		if (dictionary["geo_facet"] != nil) { geo_facet = Geo_facet.modelsFromDictionaryArray(array: dictionary["geo_facet"] as! NSArray) }
-		if (dictionary["media"] != nil) { media = Media.modelsFromDictionaryArray(array: dictionary["media"] as! NSArray) } */
+         */
         
         let media = dictionary["media"]
         if media is Array<Any> {

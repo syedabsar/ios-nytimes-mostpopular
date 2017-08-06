@@ -18,8 +18,8 @@
 		1718A40F1F35A2FF007E5E8D /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1718A4091F35A2FF007E5E8D /* Media.swift */; };
 		1718A4101F35A2FF007E5E8D /* MostViewedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1718A40A1F35A2FF007E5E8D /* MostViewedResponse.swift */; };
 		1718A4111F35A2FF007E5E8D /* MostViewedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1718A40A1F35A2FF007E5E8D /* MostViewedResponse.swift */; };
-		1718A4121F35A2FF007E5E8D /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1718A40B1F35A2FF007E5E8D /* Results.swift */; };
-		1718A4131F35A2FF007E5E8D /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1718A40B1F35A2FF007E5E8D /* Results.swift */; };
+		1718A4121F35A2FF007E5E8D /* MostViewedResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1718A40B1F35A2FF007E5E8D /* MostViewedResults.swift */; };
+		1718A4131F35A2FF007E5E8D /* MostViewedResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1718A40B1F35A2FF007E5E8D /* MostViewedResults.swift */; };
 		1779611A1F34A91C00DD0FD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177961191F34A91C00DD0FD6 /* AppDelegate.swift */; };
 		177961211F34A91C00DD0FD6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1779611F1F34A91C00DD0FD6 /* Main.storyboard */; };
 		177961231F34A91C00DD0FD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 177961221F34A91C00DD0FD6 /* Assets.xcassets */; };
@@ -35,6 +35,12 @@
 		1791F9EF1F3607D90010F0A5 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791F9ED1F3607D90010F0A5 /* MasterViewController.swift */; };
 		1791F9F31F3610AE0010F0A5 /* BusinessLogicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791F9F21F3610AE0010F0A5 /* BusinessLogicHelper.swift */; };
 		17CE11881F3619FE00F6D225 /* BusinessLogicHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CE11871F3619FE00F6D225 /* BusinessLogicHelperTests.swift */; };
+		17CE118C1F36330400F6D225 /* SectionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CE118A1F36330400F6D225 /* SectionsResponse.swift */; };
+		17CE118D1F36330400F6D225 /* SectionsResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CE118B1F36330400F6D225 /* SectionsResults.swift */; };
+		17CE11941F36345500F6D225 /* AZDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CE11901F36345500F6D225 /* AZDropdownMenu.swift */; };
+		17CE11951F36345500F6D225 /* AZDropdownMenuBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CE11911F36345500F6D225 /* AZDropdownMenuBaseCell.swift */; };
+		17CE11961F36345500F6D225 /* AZDropdownMenuConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CE11921F36345500F6D225 /* AZDropdownMenuConfig.swift */; };
+		17CE11971F36345500F6D225 /* AZDropdownMenuDefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CE11931F36345500F6D225 /* AZDropdownMenuDefaultCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +74,7 @@
 		1718A4081F35A2FF007E5E8D /* Media_metadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media_metadata.swift; sourceTree = "<group>"; };
 		1718A4091F35A2FF007E5E8D /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		1718A40A1F35A2FF007E5E8D /* MostViewedResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MostViewedResponse.swift; sourceTree = "<group>"; };
-		1718A40B1F35A2FF007E5E8D /* Results.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		1718A40B1F35A2FF007E5E8D /* MostViewedResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MostViewedResults.swift; sourceTree = "<group>"; };
 		177961161F34A91C00DD0FD6 /* NY Times Most Popular Articles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NY Times Most Popular Articles.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		177961191F34A91C00DD0FD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		177961201F34A91C00DD0FD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -87,6 +93,12 @@
 		1791F9ED1F3607D90010F0A5 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		1791F9F21F3610AE0010F0A5 /* BusinessLogicHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessLogicHelper.swift; sourceTree = "<group>"; };
 		17CE11871F3619FE00F6D225 /* BusinessLogicHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessLogicHelperTests.swift; sourceTree = "<group>"; };
+		17CE118A1F36330400F6D225 /* SectionsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionsResponse.swift; sourceTree = "<group>"; };
+		17CE118B1F36330400F6D225 /* SectionsResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionsResults.swift; sourceTree = "<group>"; };
+		17CE11901F36345500F6D225 /* AZDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZDropdownMenu.swift; sourceTree = "<group>"; };
+		17CE11911F36345500F6D225 /* AZDropdownMenuBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZDropdownMenuBaseCell.swift; sourceTree = "<group>"; };
+		17CE11921F36345500F6D225 /* AZDropdownMenuConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZDropdownMenuConfig.swift; sourceTree = "<group>"; };
+		17CE11931F36345500F6D225 /* AZDropdownMenuDefaultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZDropdownMenuDefaultCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,10 +123,8 @@
 		1718A4071F35A2FF007E5E8D /* Web Service Models */ = {
 			isa = PBXGroup;
 			children = (
-				1718A4081F35A2FF007E5E8D /* Media_metadata.swift */,
-				1718A4091F35A2FF007E5E8D /* Media.swift */,
-				1718A40A1F35A2FF007E5E8D /* MostViewedResponse.swift */,
-				1718A40B1F35A2FF007E5E8D /* Results.swift */,
+				17CE118E1F36330700F6D225 /* Sections */,
+				17CE11891F3632FB00F6D225 /* Most Viewed */,
 			);
 			path = "Web Service Models";
 			sourceTree = "<group>";
@@ -188,6 +198,7 @@
 		1791F9E21F35AA9A0010F0A5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				17CE118F1F36345500F6D225 /* AZDropdownMenu */,
 				1791F9E31F35AA9A0010F0A5 /* SwiftSpinner.swift */,
 				1791F9E91F3600AB0010F0A5 /* EnumUtils.swift */,
 			);
@@ -217,6 +228,37 @@
 				1791F9EC1F3607D90010F0A5 /* DetailViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		17CE11891F3632FB00F6D225 /* Most Viewed */ = {
+			isa = PBXGroup;
+			children = (
+				1718A4081F35A2FF007E5E8D /* Media_metadata.swift */,
+				1718A4091F35A2FF007E5E8D /* Media.swift */,
+				1718A40A1F35A2FF007E5E8D /* MostViewedResponse.swift */,
+				1718A40B1F35A2FF007E5E8D /* MostViewedResults.swift */,
+			);
+			name = "Most Viewed";
+			sourceTree = "<group>";
+		};
+		17CE118E1F36330700F6D225 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				17CE118A1F36330400F6D225 /* SectionsResponse.swift */,
+				17CE118B1F36330400F6D225 /* SectionsResults.swift */,
+			);
+			name = Sections;
+			sourceTree = "<group>";
+		};
+		17CE118F1F36345500F6D225 /* AZDropdownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				17CE11901F36345500F6D225 /* AZDropdownMenu.swift */,
+				17CE11911F36345500F6D225 /* AZDropdownMenuBaseCell.swift */,
+				17CE11921F36345500F6D225 /* AZDropdownMenuConfig.swift */,
+				17CE11931F36345500F6D225 /* AZDropdownMenuDefaultCell.swift */,
+			);
+			path = AZDropdownMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,14 +369,20 @@
 				1718A4051F359F63007E5E8D /* ConfigurationManager.swift in Sources */,
 				177961591F34AC3D00DD0FD6 /* OperationsManager.swift in Sources */,
 				1791F9EE1F3607D90010F0A5 /* DetailViewController.swift in Sources */,
-				1718A4121F35A2FF007E5E8D /* Results.swift in Sources */,
+				1718A4121F35A2FF007E5E8D /* MostViewedResults.swift in Sources */,
 				1791F9E41F35AA9A0010F0A5 /* SwiftSpinner.swift in Sources */,
 				1718A40C1F35A2FF007E5E8D /* Media_metadata.swift in Sources */,
 				1791F9E81F35BE790010F0A5 /* MasterSummaryTableViewCell.swift in Sources */,
 				1791F9F31F3610AE0010F0A5 /* BusinessLogicHelper.swift in Sources */,
+				17CE11951F36345500F6D225 /* AZDropdownMenuBaseCell.swift in Sources */,
+				17CE118C1F36330400F6D225 /* SectionsResponse.swift in Sources */,
+				17CE118D1F36330400F6D225 /* SectionsResults.swift in Sources */,
+				17CE11941F36345500F6D225 /* AZDropdownMenu.swift in Sources */,
 				1718A4101F35A2FF007E5E8D /* MostViewedResponse.swift in Sources */,
 				1718A40E1F35A2FF007E5E8D /* Media.swift in Sources */,
 				1791F9EA1F3600AB0010F0A5 /* EnumUtils.swift in Sources */,
+				17CE11971F36345500F6D225 /* AZDropdownMenuDefaultCell.swift in Sources */,
+				17CE11961F36345500F6D225 /* AZDropdownMenuConfig.swift in Sources */,
 				1779611A1F34A91C00DD0FD6 /* AppDelegate.swift in Sources */,
 				1791F9EF1F3607D90010F0A5 /* MasterViewController.swift in Sources */,
 			);
@@ -346,7 +394,7 @@
 			files = (
 				1718A4061F359F63007E5E8D /* ConfigurationManager.swift in Sources */,
 				1718A4021F359BDA007E5E8D /* OperationsManager.swift in Sources */,
-				1718A4131F35A2FF007E5E8D /* Results.swift in Sources */,
+				1718A4131F35A2FF007E5E8D /* MostViewedResults.swift in Sources */,
 				1718A40F1F35A2FF007E5E8D /* Media.swift in Sources */,
 				1718A4111F35A2FF007E5E8D /* MostViewedResponse.swift in Sources */,
 				17CE11881F3619FE00F6D225 /* BusinessLogicHelperTests.swift in Sources */,

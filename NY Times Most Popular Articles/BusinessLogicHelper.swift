@@ -36,16 +36,17 @@ enum TimePeriod : String {
     }
 }
 
+
 class BusinessLogicHelper {
 
-    static func filterBySearchKeywords(searchKeyword: String, resultsArray : Array<Results>) -> Array<Results> {
+    static func filterBySearchKeywords(searchKeyword: String, resultsArray : Array<MostViewedResults>) -> Array<MostViewedResults> {
         
         if searchKeyword.characters.count == 0 {
             return resultsArray
         }
     
         let filteredArray = resultsArray.filter({
-            (result : Results) -> Bool in
+            (result : MostViewedResults) -> Bool in
             return (result.title?.localizedCaseInsensitiveContains(searchKeyword))!
         })
 

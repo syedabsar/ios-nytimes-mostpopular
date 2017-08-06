@@ -12,11 +12,11 @@ import Foundation
  
 /* For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-public class MostViewedResponse {
+public class SectionsResponse {
 	public var status : String?
 	public var copyright : String?
 	public var num_results : Int?
-	public var results : Array<MostViewedResults>?
+	public var results : Array<SectionsResults>?
 
 /**
     Returns an array of models based on given dictionary.
@@ -28,12 +28,12 @@ public class MostViewedResponse {
 
     - returns: Array of Json4Swift_Base Instances.
 */
-    public class func modelsFromDictionaryArray(array:NSArray) -> [MostViewedResponse]
+    public class func modelsFromDictionaryArray(array:NSArray) -> [SectionsResponse]
     {
-        var models:[MostViewedResponse] = []
+        var models:[SectionsResponse] = []
         for item in array
         {
-            models.append(MostViewedResponse(dictionary: item as! NSDictionary)!)
+            models.append(SectionsResponse(dictionary: item as! NSDictionary)!)
         }
         return models
     }
@@ -53,7 +53,7 @@ public class MostViewedResponse {
 		status = dictionary["status"] as? String
 		copyright = dictionary["copyright"] as? String
 		num_results = dictionary["num_results"] as? Int
-		if (dictionary["results"] != nil) { results = MostViewedResults.modelsFromDictionaryArray(array: dictionary["results"] as! NSArray) }
+		if (dictionary["results"] != nil) { results = SectionsResults.modelsFromDictionaryArray(array: dictionary["results"] as! NSArray) }
 	}
 
 		

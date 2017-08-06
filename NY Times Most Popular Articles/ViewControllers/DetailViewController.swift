@@ -18,7 +18,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var publishDateLabel: UILabel!
     
     // MARK: - Properties
-    var detailItem: Results?
+    var detailItem: MostViewedResults?
 
     // MARK: - View Lifecycle
     override func viewDidLoad() {
