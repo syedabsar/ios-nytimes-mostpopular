@@ -18,7 +18,7 @@ class OperationsManager {
         })
     }
     
-    public func getSectionsList(completionHandler: @escaping (Array<Any>?, Error?) -> Void) {
+    public func getSectionsList(completionHandler: @escaping (Array<SectionsResults>?, Error?) -> Void) {
     
         let urlPath = ConfigurationManager.apiPathSectionsList()
 
@@ -32,7 +32,7 @@ class OperationsManager {
 
     }
     
-    public func getMostViewed(section : String, timePeriod : TimePeriod, completionHandler: @escaping (Array<Any>?, Error?) -> Void) {
+    public func getMostViewed(section : String, timePeriod : TimePeriod, completionHandler: @escaping (Array<MostViewedResults>?, Error?) -> Void) {
     
         let urlPath = ConfigurationManager.apiPathMostViewed(section: section, timePeriod: timePeriod.rawValue)
         

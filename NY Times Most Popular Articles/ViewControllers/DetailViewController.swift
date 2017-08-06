@@ -16,6 +16,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var byLineLabel: UILabel!
     @IBOutlet weak var publishDateLabel: UILabel!
+    @IBOutlet weak var previewImageView: UIImageView!
+    @IBOutlet weak var moreDetailsButton: UIButton!
     
     // MARK: - Properties
     var detailItem: MostViewedResults?
@@ -42,8 +44,8 @@ class DetailViewController: UIViewController {
             self.sectionLabel.text = detailItem?.section
             self.titleLabel.text = detailItem?.title
             self.byLineLabel.text = detailItem?.byline
-            self.publishDateLabel.text = detailItem?.published_date
-            
+            self.publishDateLabel.text = "🗓 "+(detailItem?.published_date)!
+            self.moreDetailsButton.setTitle("See Full "+(detailItem?.type)!, for: .normal)
             
             if let media = detailItem?.media?.first {
                 
@@ -52,7 +54,7 @@ class DetailViewController: UIViewController {
                     OperationsManager().downloadImage(urlString: (metadata.url)!) { (image, error) in
                         
                         DispatchQueue.main.async() { () -> Void in
-                            // cell.thumbnailView?.image = image
+                            self.previewImageView?.image = image
                         }
                         
                     }

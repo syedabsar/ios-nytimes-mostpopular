@@ -27,7 +27,7 @@ public class MostViewedResults {
 	public var asset_id : Int?
 	public var views : Int?
 	public var des_facet : Array<String>?
-	public var org_facet : String?
+	public var org_facet : Array<String>?
 	public var per_facet : Array<String>?
 	public var geo_facet : Array<String>?
 	public var media : Array<Media>?
@@ -77,11 +77,16 @@ public class MostViewedResults {
 		id = dictionary["id"] as? Int
 		asset_id = dictionary["asset_id"] as? Int
 		views = dictionary["views"] as? Int
-       /* if (dictionary["des_facet"] != nil) { des_facet = Des_facet.modelsFromDictionaryArray(array: dictionary["des_facet"] as! NSArray) }
-		org_facet = dictionary["org_facet"] as? String
-		if (dictionary["per_facet"] != nil) { per_facet = Per_facet.modelsFromDictionaryArray(array: dictionary["per_facet"] as! NSArray) }
-		if (dictionary["geo_facet"] != nil) { geo_facet = Geo_facet.modelsFromDictionaryArray(array: dictionary["geo_facet"] as! NSArray) }
-         */
+        
+        if (dictionary["des_facet"] != nil) { des_facet = (array: dictionary["des_facet"]) as? Array<String> }
+        
+        if (dictionary["des_facet"] != nil) { des_facet = (array: dictionary["des_facet"]) as? Array<String> }
+        
+        if (dictionary["org_facet"] != nil) { des_facet = (array: dictionary["org_facet"]) as? Array<String> }
+
+        if (dictionary["per_facet"] != nil) { des_facet = (array: dictionary["per_facet"]) as? Array<String> }
+       
+        if (dictionary["geo_facet"] != nil) { des_facet = (array: dictionary["geo_facet"]) as? Array<String> }
         
         let media = dictionary["media"]
         if media is Array<Any> {

@@ -74,7 +74,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         SwiftSpinner.show(self.getFetchingMessage())
         operationsManager.getMostViewed(section: self.defaultSection, timePeriod: self.defaultTimePeriod) { (array, error) in
             
-            self.objects = array as? [MostViewedResults]
+            self.objects = array
             self.tableView.reloadData()
             self.loadSections()
         }
@@ -88,7 +88,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         
             operationsManager.getSectionsList(completionHandler: { (array, error) in
                 
-                self.sections = array as? [SectionsResults]
+                self.sections = array
                 SwiftSpinner.hide()
             
                 let sectionNamesArray = self.sections?.map({ (section: SectionsResults) -> String in
@@ -111,7 +111,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         // Code to refresh table view
         operationsManager.getMostViewed(section: "all-sections", timePeriod: self.defaultTimePeriod) { (array, error) in
             
-            self.objects = array as? [MostViewedResults]
+            self.objects = array
             self.refreshControl?.endRefreshing()
             self.tableView.reloadData()
         }
@@ -157,7 +157,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     
     func getFetchingMessage() -> String {
         
-        return "Fetching this \(self.defaultTimePeriod.getDisplayName())'s most viewed"
+        return "Fetching this \(self.defaultTimePeriod.getDisplayName())'s most viewed in \(self.defaultSection)"
     }
     
     
