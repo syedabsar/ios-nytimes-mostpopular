@@ -27,17 +27,26 @@ class OperationsManagerTests: XCTestCase {
     }
     
     func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        
     }
     
     func testMostViewed() {
+        let expectation = self.expectation(description:  "Web Service Response Received")
         
-        OperationsManager().getMostViewed(section: "all", timePeriod: TimePeriod.Day, completionHandler: { obj, err in
-        })
+        self.measure {
+            
+            OperationsManager().getMostViewed(section: "all-sections", timePeriod: TimePeriod.Day, completionHandler: { obj, err in
+                
+                expectation.fulfill()
+            })
+            
+        }
         
+        
+        self.waitForExpectations(timeout: 30) { error in
+            
+            XCTAssertNil(error)
+        }
     }
     
 }

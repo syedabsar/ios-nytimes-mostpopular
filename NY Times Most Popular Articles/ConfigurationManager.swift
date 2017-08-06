@@ -17,13 +17,13 @@ class ConfigurationManager {
     static let apiKey = "4820a19587ef4514a6e6a39d90bf1ef9"
 
     
-    public static func apiPathMostViewed(section : String, timePeriod: String) -> String {
+    public static func apiPathMostViewed(section : String, timePeriod: String, offset : Int) -> String {
 
         if section.characters.count == 0 || timePeriod.characters.count == 0 {
             assertionFailure("section and time period are needed.")
         }
         
-        return setApiKey(path: scheme + host + basePath + "/mostviewed/\(section)/\(timePeriod).json")
+        return setApiKey(path: scheme + host + basePath + "/mostviewed/\(section)/\(timePeriod).json") + "&offset=\(offset)"
     }
     
     public static func apiPathSectionsList() -> String {

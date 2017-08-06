@@ -32,15 +32,15 @@ class OperationsManager {
 
     }
     
-    public func getMostViewed(section : String, timePeriod : TimePeriod, completionHandler: @escaping (Array<MostViewedResults>?, Error?) -> Void) {
+    public func getMostViewed(section : String, timePeriod : TimePeriod, offset: Int, completionHandler: @escaping (MostViewedResponse?, Error?) -> Void) {
     
-        let urlPath = ConfigurationManager.apiPathMostViewed(section: section, timePeriod: timePeriod.rawValue)
+        let urlPath = ConfigurationManager.apiPathMostViewed(section: section, timePeriod: timePeriod.rawValue, offset: offset)
         
         NetworkController().getJSON(urlString: urlPath, completionHandler: {obj, err in
             
             let responseModel = MostViewedResponse(dictionary: obj as! NSDictionary)
             
-            completionHandler(responseModel?.results, err)
+            completionHandler(responseModel, err)
         })
     }
 

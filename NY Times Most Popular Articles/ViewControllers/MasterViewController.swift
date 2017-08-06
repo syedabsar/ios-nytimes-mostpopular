@@ -14,8 +14,10 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     
     // MARK: - Properties
     var detailViewController: DetailViewController? = nil
-    var mostViewedItemsList : [MostViewedResults]? = nil
+    var mostViewedItemsList : [MostViewedResults]? = Array<MostViewedResults>()
     var filteredSearchResultList : [MostViewedResults]? = nil
+    var currentOffset = 0
+    var totalResults = 0
     
     var searchMode = false
     
@@ -77,10 +79,20 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     func loadLatestItems() {
         SwiftSpinner.useContainerView(self.view)
         SwiftSpinner.show(self.getFetchingMessage())
-        operationsManager.getMostViewed(section: self.defaultSection, timePeriod: self.defaultTimePeriod) { (array, error) in
+        
+        operationsManager.getMostViewed(
+            section: self.defaultSection,
+            timePeriod: self.defaultTimePeriod,
+            offset: self.currentOffset) { (responseModel, error) in
             
-            self.mostViewedItemsList = array
+                self.totalResults = (responseModel?.num_results)!
+                
+            self.mostViewedItemsList?.append(contentsOf: (responseModel?.results)!)
+                
             self.tableView.reloadData()
+                
+            self.tableView.scrollToRow(at: IndexPath(row: self.currentOffset, section: 0), at: .bottom, animated: false)
+                
             self.loadSectionsList()
         }
     }
@@ -113,10 +125,14 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func refresh(sender:AnyObject) {
+        
+        self.currentOffset = 0
+        
         // Code to refresh table view
-        operationsManager.getMostViewed(section: "all-sections", timePeriod: self.defaultTimePeriod) { (array, error) in
+        operationsManager.getMostViewed(section: "all-sections", timePeriod: self.defaultTimePeriod, offset: 0) { (responseModel, error) in
             
-            self.mostViewedItemsList = array
+            self.mostViewedItemsList = responseModel?.results
+            
             self.refreshControl?.endRefreshing()
             self.tableView.reloadData()
         }
@@ -292,6 +308,16 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let offsetNumber = indexPath.row + 1;
+        if (offsetNumber % 20 == 0 && offsetNumber > self.currentOffset && (self.mostViewedItemsList?.count)! <= self.totalResults) {
+                self.currentOffset = offsetNumber
+                self.loadLatestItems()
+        }
+    }
+
     
 }
 
