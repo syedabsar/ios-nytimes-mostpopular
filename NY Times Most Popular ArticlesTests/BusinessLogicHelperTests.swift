@@ -20,8 +20,24 @@ class BusinessLogicHelperTests: XCTestCase {
         super.tearDown()
     }
     
-    func testSearchFilterEmpty() {
+    func testDisplayNameForTimePeriodEnum() {
+        
+        XCTAssertFalse(TimePeriod.Day.getDisplayName() != "Day")
+        XCTAssertFalse(TimePeriod.Week.getDisplayName() != "Week")
+        XCTAssertFalse(TimePeriod.Month.getDisplayName() != "Month")
+    }
+
+    func testRawValueForTimePeriodEnum() {
+        
+        XCTAssertFalse(TimePeriod.Day.rawValue != "1")
+        XCTAssertFalse(TimePeriod.Week.rawValue != "7")
+        XCTAssertFalse(TimePeriod.Month.rawValue != "30")
+    }
+
     
+    func testSearchFilterWithEmptyKeyword() {
+    //Given an array and empty search string, the returned array should be same number of items.
+        
         
     }
 
