@@ -16,7 +16,7 @@ App Features:
 * Supports API Pagination 
 * Dynamic Time Period Configuration 
 * Dynamic Section Configuration 
-* Leverage today's best coding practices (See Disclaimer)
+* Leverage today's best coding practices ([See Disclaimer](#Disclaimer))
 
 
 
@@ -61,11 +61,11 @@ To keep the implementation simple, not recommended for production usages (Best t
 None of the classes in the current scope are maintaining any stateful functionality at the moment. (Although a session like state can be maintained for current offset etc under a single class, but with a 2-page application, viewcontroller handling this is simplest) Unless a class needs to maintains a state, using singleton only for static methods should be avoided.
 
 * What areas are potentially improvable, or to be updated in future?
-- Unit Tests, current coverage is basic with minimum scenarios, this could be reflected more. Web service response stubs could be utilised for parsing tests etc.
+[] Unit Tests, current coverage is basic with minimum scenarios, this could be reflected more. Web service response stubs could be utilised for parsing tests etc.
 
-- Config Manager can be further extended to support multiple environments and url configurations, for example QA, Production etc.
+[] Config Manager can be further extended to support multiple environments and url configurations, for example QA, Production etc.
 
-- Appearance could be further implemented in a more flexible way to plug and play multiple themes.
+[] Appearance could be further implemented in a more flexible way to plug and play multiple themes.
 
 ## License
 
