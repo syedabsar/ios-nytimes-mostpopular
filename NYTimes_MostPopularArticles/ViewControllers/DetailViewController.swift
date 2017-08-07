@@ -82,5 +82,6 @@ class DetailViewController: UIViewController {
         }
         
     }
+    
 }
 

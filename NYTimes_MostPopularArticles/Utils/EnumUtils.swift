@@ -10,6 +10,9 @@ import Foundation
 
 class EnumUtils {
 
+    /**
+    Iterates over an enum values.     
+     */
     public static func iterateEnum<T: Hashable>(_: T.Type) -> AnyIterator<T> {
         var i = 0
         return AnyIterator {

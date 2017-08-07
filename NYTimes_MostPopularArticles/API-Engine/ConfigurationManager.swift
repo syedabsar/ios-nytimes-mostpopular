@@ -29,7 +29,7 @@ class ConfigurationManager {
             assertionFailure("section and time period are needed.")
         }
         
-        return setApiKey(path: scheme + host + basePath + "/mostviewed/\(section)/\(timePeriod).json") + "&offset=\(offset)"
+        return assignApiKey(path: scheme + host + basePath + "/mostviewed/\(section)/\(timePeriod).json") + "&offset=\(offset)"
     }
     
     /**
@@ -39,7 +39,7 @@ class ConfigurationManager {
      */
     public static func apiPathSectionsList() -> String {
         
-        return setApiKey(path: scheme + host + basePath + "/viewed/sections.json")
+        return assignApiKey(path: scheme + host + basePath + "/viewed/sections.json")
     }
     
     /**
@@ -49,7 +49,7 @@ class ConfigurationManager {
 
      - returns: Full URL string for given path with api key inclusive.
      */
-    private static  func setApiKey(path: String) -> String {
+    private static  func assignApiKey(path: String) -> String {
         
         let base64data = Data(base64Encoded: apiKey)
         

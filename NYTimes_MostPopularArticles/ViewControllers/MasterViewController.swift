@@ -27,7 +27,6 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     
     var sections : [SectionsResults]? = nil
     var defaultSection = "all-sections"
-
     var defaultTimePeriod = TimePeriod.Week { didSet {
         refreshControl?.attributedTitle = NSAttributedString(string: self.getFetchingMessage())
         
@@ -76,6 +75,11 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     }
     
     // MARK: - ViewController Methods
+    func resetResults() {
+        self.mostViewedItemsList?.removeAll()
+        self.currentOffset = 0
+    }
+    
     func loadLatestItems() {
         SwiftSpinner.useContainerView(self.view)
         SwiftSpinner.show(self.getFetchingMessage())
@@ -115,7 +119,9 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
                 self.menu = AZDropdownMenu(titles: sectionNamesArray!)
                 self.menu?.cellTapHandler = { indexPath in
 
-                    self.defaultSection = (sectionNamesArray?[indexPath.row])!
+                    self.defaultSection = (sectionNamesArray?[indexPath.row])!.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)!
+
+                    self.resetResults()
                     self.loadLatestItems()
                 }
 
@@ -312,6 +318,5 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         }
     }
 
-    
 }
 

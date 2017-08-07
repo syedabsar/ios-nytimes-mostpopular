@@ -43,11 +43,12 @@ class NetworkController : NetworkControllerProtocol  {
      */
     public func getJSON(urlString : String, completionHandler: @escaping (AnyObject, Error?) -> Void) {
         Alamofire.request(urlString).responseJSON { response in
-            
+            #if DEBUG
             print("Request: \(String(describing: response.request))")   // original url request
             print("Response: \(String(describing: response.response))") // http url response
             print("Result: \(response.result)")                         // response serialization result
-            
+            #endif
+
             
             if let json = response.result.value {
                 print("JSON: \(json)") // serialized json response

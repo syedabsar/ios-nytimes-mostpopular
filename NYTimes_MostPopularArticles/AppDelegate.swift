@@ -85,6 +85,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         UIButton.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).backgroundColor = nil
         
         UIButton.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).tintColor = nil
+        
+        UIApplication.shared.statusBarStyle = .lightContent
     }
     
     // MARK: - Split view

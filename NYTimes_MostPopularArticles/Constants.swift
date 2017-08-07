@@ -9,7 +9,7 @@
 struct Constants {
     struct MasterViewController {
         static let SummaryCellIdentifier = "SummaryCell"
-        static let PlaceholderImageName = "PlaceholderImageName"
+        static let PlaceholderImageName = "Placeholder"
     }
     struct DetailViewController {
         static let PlaceholderImageName = Constants.MasterViewController.PlaceholderImageName
