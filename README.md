@@ -46,7 +46,7 @@ xcodebuild -workspace "NYTimes_MostPopularArticles.xcworkspace" -scheme "NYTimes
 
 ## Architecture at a Glance
 
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![Architecture at a Glance](https://raw.githubusercontent.com/syedabsar/ios-nytimes-mostpopular/master/nytimes_architecture.png)
 
 
 ## Disclaimer
