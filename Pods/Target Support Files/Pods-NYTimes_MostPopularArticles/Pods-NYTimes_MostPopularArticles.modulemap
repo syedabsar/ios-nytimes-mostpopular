@@ -1,0 +1,6 @@
+framework module Pods_NYTimes_MostPopularArticles {
+  umbrella header "Pods-NYTimes_MostPopularArticles-umbrella.h"
+
+  export *
+  module * { export * }
+}

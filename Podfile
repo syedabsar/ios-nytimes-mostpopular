@@ -3,13 +3,13 @@
 # Uncomment this line if you're using Swift
 use_frameworks!
 
-target 'NY Times Most Popular Articles' do
+target 'NYTimes_MostPopularArticles' do
     	pod 'Alamofire', '~> 4.4'
 	pod 'AZDropdownMenu'
 	pod "SwiftSpinner"
 end
 
-target 'NY Times Most Popular ArticlesTests' do
+target 'NYTimes_MostPopularArticlesTests’ do
 
 end
 
