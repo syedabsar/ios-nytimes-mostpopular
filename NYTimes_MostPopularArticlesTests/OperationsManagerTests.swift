@@ -42,7 +42,6 @@ class OperationsManagerTests: XCTestCase {
             
         }
         
-        
         self.waitForExpectations(timeout: 30) { error in
             
             XCTAssertNil(error)

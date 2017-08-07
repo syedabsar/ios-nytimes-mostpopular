@@ -157,10 +157,10 @@
 			children = (
 				17025FC11F38366D00D00340 /* NYTimes_MostPopularArticlesTests.swift */,
 				17025FBD1F38366D00D00340 /* BusinessLogicHelperTests.swift */,
+				17025FC21F38366D00D00340 /* OperationsManagerTests.swift */,
 				17025FBE1F38366D00D00340 /* ConfigurationManagerTests.swift */,
 				17025FBF1F38366D00D00340 /* EnumUtilsTests.swift */,
 				17025FC01F38366D00D00340 /* Info.plist */,
-				17025FC21F38366D00D00340 /* OperationsManagerTests.swift */,
 			);
 			path = NYTimes_MostPopularArticlesTests;
 			sourceTree = "<group>";
