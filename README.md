@@ -16,7 +16,7 @@ App Features:
 * Supports API Pagination 
 * Dynamic Time Period Configuration 
 * Dynamic Section Configuration 
-* Leverage today's best coding practices ([See Disclaimer](#Disclaimer))
+* Leverage today's best coding practices ([See Disclaimer](#disclaimer))
 
 
 
@@ -45,7 +45,7 @@ xcodebuild -workspace "NYTimes_MostPopularArticles.xcworkspace" -scheme "NYTimes
 ![Architecture at a Glance](https://raw.githubusercontent.com/syedabsar/ios-nytimes-mostpopular/master/nytimes_architecture.png)
 
 
-## Disclaimer
+### Disclaimer
 
 Although code quality can be subjective at times, and the approaches may not entirely be the best, I'll be happy to answer any questions related to existing implementations as well as acknowledged areas which can potentially be further improved.
 
@@ -60,12 +60,7 @@ To keep the implementation simple, not recommended for production usages (Best t
 * Why some classes have static methods but are not Singletons?
 None of the classes in the current scope are maintaining any stateful functionality at the moment. (Although a session like state can be maintained for current offset etc under a single class, but with a 2-page application, viewcontroller handling this is simplest) Unless a class needs to maintains a state, using singleton only for static methods should be avoided.
 
-* What areas are potentially improvable, or to be updated in future?
-[] Unit Tests, current coverage is basic with minimum scenarios, this could be reflected more. Web service response stubs could be utilised for parsing tests etc.
-
-[] Config Manager can be further extended to support multiple environments and url configurations, for example QA, Production etc.
-
-[] Appearance could be further implemented in a more flexible way to plug and play multiple themes.
+* What areas are potentially improvable, or to be updated in future? -- Unit Tests, current coverage is basic with minimum scenarios, this could be reflected more. Web service response stubs could be utilised for parsing tests etc. -- Config Manager can be further extended to support multiple environments and url configurations, for example QA, Production etc. -- Appearance could be further implemented in a more flexible way to plug and play multiple themes.
 
 ## License
 
