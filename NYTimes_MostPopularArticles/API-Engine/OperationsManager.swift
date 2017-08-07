@@ -10,7 +10,19 @@ import UIKit
 
 class OperationsManager {
     
-    public func downloadImage(urlString : String, completionHandler: @escaping (UIImage?, Error?) -> Void) {
+    public func downloadImage(object : MostViewedResults, completionHandler: @escaping (UIImage?, Error?) -> Void) {
+    
+        if let media = object.media?.first {
+            
+            if  let metadata = media.media_metadata?.first {
+                
+                self.downloadImage(urlString: (metadata.url)!, completionHandler: completionHandler)
+            }
+        }
+
+    }
+    
+    private func downloadImage(urlString : String, completionHandler: @escaping (UIImage?, Error?) -> Void) {
     
         NetworkController().getData(urlString: urlString, completionHandler: {data, err in
             

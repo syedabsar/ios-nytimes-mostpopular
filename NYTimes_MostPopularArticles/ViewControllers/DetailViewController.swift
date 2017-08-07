@@ -49,18 +49,12 @@ class DetailViewController: UIViewController {
             self.publishDateLabel.text = "🗓 "+(detailItem?.published_date)!
             self.moreDetailsButton.setTitle("See Full "+(detailItem?.type)!, for: .normal)
             
-           self.previewImageView?.image = UIImage(named: Constants.DetailViewController.PlaceholderImageName)
-            if let media = detailItem?.media?.first {
+            self.previewImageView?.image = UIImage(named: Constants.DetailViewController.PlaceholderImageName)
+            
+            OperationsManager().downloadImage(object: self.detailItem!) { (image, error) in
                 
-                if  let metadata = media.media_metadata?.first {
-                    
-                    OperationsManager().downloadImage(urlString: (metadata.url)!) { (image, error) in
-                        
-                        DispatchQueue.main.async() { () -> Void in
-                            self.previewImageView?.image = image
-                        }
-                        
-                    }
+                DispatchQueue.main.async() { () -> Void in
+                    self.previewImageView?.image = image
                 }
             }
             

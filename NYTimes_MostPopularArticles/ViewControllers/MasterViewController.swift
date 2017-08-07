@@ -289,19 +289,12 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         cell.thumbnailView?.image = UIImage(named: Constants.MasterViewController.PlaceholderImageName)
         cell.thumbnailView?.layer.cornerRadius = 20
         
-        
-        if let media = object?.media?.first {
+        operationsManager.downloadImage(object: object!) { (image, error) in
             
-            if  let metadata = media.media_metadata?.first {
-                
-                operationsManager.downloadImage(urlString: (metadata.url)!) { (image, error) in
-                    
-                    DispatchQueue.main.async() { () -> Void in
-                        cell.thumbnailView?.image = image
-                    }
-                    
-                }
+            DispatchQueue.main.async() { () -> Void in
+                cell.thumbnailView?.image = image
             }
+            
         }
         
         cell.layoutIfNeeded()
