@@ -1,0 +1,41 @@
+//
+//  NetworkController.swift
+//  NY Times Most Popular Articles
+//
+//  Created by Syed Absar Karim on 8/5/17.
+//  Copyright © 2017 Syed Absar Karim. All rights reserved.
+//
+
+import UIKit
+import Alamofire
+
+class NetworkController  {
+    
+    func getData(urlString : String, completionHandler: @escaping (Data?, Error?) -> Void) {
+
+        Alamofire.request(urlString).responseData { response in
+
+            if let data = response.data {
+                completionHandler(data, response.error)
+            }
+        }
+    }
+
+    
+    public func getJSON(urlString : String, completionHandler: @escaping (AnyObject, Error?) -> Void) {
+        Alamofire.request(urlString).responseJSON { response in
+            
+            print("Request: \(String(describing: response.request))")   // original url request
+            print("Response: \(String(describing: response.response))") // http url response
+            print("Result: \(response.result)")                         // response serialization result
+            
+            
+            if let json = response.result.value {
+                print("JSON: \(json)") // serialized json response
+                completionHandler(json as AnyObject, response.error)
+            }
+        }
+        
+    }
+    
+}
