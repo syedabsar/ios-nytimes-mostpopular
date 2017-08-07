@@ -9,19 +9,38 @@
 import UIKit
 import Alamofire
 
-class NetworkController  {
+class NetworkController : NetworkControllerProtocol  {
     
+    /**
+     Gets a Data object corresponding to given URL String.
+     
+     
+     - parameter urlString: Full URL of the resource.
+     - parameter completionHandler: Callback with opionally the returned data and error.
+     
+     This method accepts a string value representing the full url and a callback handler with optionally the data and error
+     */
     func getData(urlString : String, completionHandler: @escaping (Data?, Error?) -> Void) {
 
         Alamofire.request(urlString).responseData { response in
 
             if let data = response.data {
                 completionHandler(data, response.error)
+            } else {
+                completionHandler(nil, response.error)
             }
         }
     }
 
-    
+    /**
+     Gets a JSON dictionary object corresponding to given URL String.
+     
+     
+     - parameter urlString: Full URL of the resource.
+     - parameter completionHandler: Callback with opionally the returned data and error.
+     
+     This method accepts a string value representing the full url and a callback handler with optionally the data and error
+     */
     public func getJSON(urlString : String, completionHandler: @escaping (AnyObject, Error?) -> Void) {
         Alamofire.request(urlString).responseJSON { response in
             

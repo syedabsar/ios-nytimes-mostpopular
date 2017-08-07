@@ -39,6 +39,14 @@ enum TimePeriod : String {
 
 class BusinessLogicHelper {
 
+    /**
+     Searches for and presence of a given string in the title of the given array.
+     
+     
+     - parameter searchKeyword: String to search, must contain a value.
+     - parameter resultsArray: Array to search, must hold MostViewedResults types.
+     - returns: Filtered array
+     */
     static func filterBySearchKeywords(searchKeyword: String, resultsArray : Array<MostViewedResults>) -> Array<MostViewedResults> {
         
         if searchKeyword.characters.count == 0 {

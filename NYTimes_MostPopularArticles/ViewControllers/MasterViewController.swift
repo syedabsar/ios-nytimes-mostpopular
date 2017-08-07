@@ -282,6 +282,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.MasterViewController.SummaryCellIdentifier, for: indexPath) as!  MasterSummaryTableViewCell
         
+        //Populate object information to cell
         let object = self.searchMode ? self.filteredSearchResultList?[indexPath.row] : self.mostViewedItemsList?[indexPath.row]
         cell.titleLabel!.text = object?.title
         cell.byLineLabel.text = object?.byline

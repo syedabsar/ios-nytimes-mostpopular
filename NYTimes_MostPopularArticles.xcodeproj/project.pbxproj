@@ -31,6 +31,7 @@
 		175FE5981F383AD5001B277F /* MostViewedResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175FE58E1F383AD5001B277F /* MostViewedResults.swift */; };
 		175FE5991F383AD5001B277F /* SectionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175FE58F1F383AD5001B277F /* SectionsResponse.swift */; };
 		175FE59A1F383AD5001B277F /* SectionsResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175FE5901F383AD5001B277F /* SectionsResults.swift */; };
+		175FE59E1F3840E1001B277F /* NetworkControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175FE59D1F3840E1001B277F /* NetworkControllerProtocol.swift */; };
 		4CB0B2C82850479BF6E3EBAB /* Pods_NYTimes_MostPopularArticles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B453700ED5B3935901A416D /* Pods_NYTimes_MostPopularArticles.framework */; };
 		9A21D98A89E685975C83ED2C /* Pods_NYTimes_MostPopularArticlesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A53E2004749C95A21DB954 /* Pods_NYTimes_MostPopularArticlesTests.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		175FE58E1F383AD5001B277F /* MostViewedResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MostViewedResults.swift; sourceTree = "<group>"; };
 		175FE58F1F383AD5001B277F /* SectionsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionsResponse.swift; sourceTree = "<group>"; };
 		175FE5901F383AD5001B277F /* SectionsResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionsResults.swift; sourceTree = "<group>"; };
+		175FE59D1F3840E1001B277F /* NetworkControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkControllerProtocol.swift; sourceTree = "<group>"; };
 		177961161F34A91C00DD0FD6 /* NYTimes_MostPopularArticles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYTimes_MostPopularArticles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1779612C1F34A91C00DD0FD6 /* NYTimes_MostPopularArticlesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NYTimes_MostPopularArticlesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20AC105F35EF6D5A14D06C25 /* Pods-NYTimes_MostPopularArticles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTimes_MostPopularArticles.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NYTimes_MostPopularArticles/Pods-NYTimes_MostPopularArticles.debug.xcconfig"; sourceTree = "<group>"; };
@@ -153,11 +155,11 @@
 		17025FBC1F38366D00D00340 /* NYTimes_MostPopularArticlesTests */ = {
 			isa = PBXGroup;
 			children = (
+				17025FC11F38366D00D00340 /* NYTimes_MostPopularArticlesTests.swift */,
 				17025FBD1F38366D00D00340 /* BusinessLogicHelperTests.swift */,
 				17025FBE1F38366D00D00340 /* ConfigurationManagerTests.swift */,
 				17025FBF1F38366D00D00340 /* EnumUtilsTests.swift */,
 				17025FC01F38366D00D00340 /* Info.plist */,
-				17025FC11F38366D00D00340 /* NYTimes_MostPopularArticlesTests.swift */,
 				17025FC21F38366D00D00340 /* OperationsManagerTests.swift */,
 			);
 			path = NYTimes_MostPopularArticlesTests;
@@ -166,6 +168,7 @@
 		175FE5851F383AD5001B277F /* API-Engine */ = {
 			isa = PBXGroup;
 			children = (
+				175FE59D1F3840E1001B277F /* NetworkControllerProtocol.swift */,
 				175FE5861F383AD5001B277F /* BusinessLogicHelper.swift */,
 				175FE5871F383AD5001B277F /* ConfigurationManager.swift */,
 				175FE5881F383AD5001B277F /* NetworkController.swift */,
@@ -455,6 +458,7 @@
 				17025FA81F38357500D00340 /* MasterViewController.swift in Sources */,
 				175FE5911F383AD5001B277F /* BusinessLogicHelper.swift in Sources */,
 				17025FA71F38357500D00340 /* DetailViewController.swift in Sources */,
+				175FE59E1F3840E1001B277F /* NetworkControllerProtocol.swift in Sources */,
 				17025FA61F38357500D00340 /* EnumUtils.swift in Sources */,
 				175FE5991F383AD5001B277F /* SectionsResponse.swift in Sources */,
 				175FE59A1F383AD5001B277F /* SectionsResults.swift in Sources */,
