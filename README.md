@@ -8,7 +8,7 @@ Covers the following:
 * Object Oriented Programming Approach 
 * Unit Tests 
 * Generic and simple code 
-* Leverage today's best coding practices
+* Leverage today's best coding practices ([See Disclaimer](#disclaimer))
 
 App Features:
 * Supports Split View (Landscape orientation)
@@ -16,9 +16,6 @@ App Features:
 * Supports API Pagination 
 * Dynamic Time Period Configuration 
 * Dynamic Section Configuration 
-* Leverage today's best coding practices ([See Disclaimer](#disclaimer))
-
-
 
 ## Installation
 
@@ -47,7 +44,7 @@ xcodebuild -workspace "NYTimes_MostPopularArticles.xcworkspace" -scheme "NYTimes
 
 ### Disclaimer
 
-Although code quality can be subjective at times, and the approaches may not entirely be the best, I'll be happy to [answer any questions] (#contact) related to existing implementations as well as acknowledged areas which can potentially be further improved.
+Although code quality can be subjective at times, and the approaches may not entirely be the best, I'll be happy to ([answer any questions](#contact)) related to existing implementations as well as acknowledged areas which can potentially be further improved.
 
 ## General Notes/FAQ's
 
