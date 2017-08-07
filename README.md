@@ -34,7 +34,7 @@ xcodebuild clean build -workspace "NYTimes_MostPopularArticles.xcworkspace" -sch
 
 ## Tests
 
-Describe and show how to run the tests with code examples.
+To run tests using xcodebuild.
 ```
 xcodebuild -workspace "NYTimes_MostPopularArticles.xcworkspace" -scheme "NYTimes_MostPopularArticles" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3' test
 ```
