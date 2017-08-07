@@ -47,7 +47,7 @@ xcodebuild -workspace "NYTimes_MostPopularArticles.xcworkspace" -scheme "NYTimes
 
 ### Disclaimer
 
-Although code quality can be subjective at times, and the approaches may not entirely be the best, I'll be happy to answer any questions related to existing implementations as well as acknowledged areas which can potentially be further improved.
+Although code quality can be subjective at times, and the approaches may not entirely be the best, I'll be happy to [answer any questions] (#contact) related to existing implementations as well as acknowledged areas which can potentially be further improved.
 
 ## General Notes/FAQ's
 
@@ -71,3 +71,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+### Contact
+* [Linkedin](http://linkedin.com/in/syedabsar/)
+
