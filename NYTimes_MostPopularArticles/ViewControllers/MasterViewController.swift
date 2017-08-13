@@ -75,6 +75,17 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     }
     
     // MARK: - ViewController Methods
+    
+    func showError(message:String) {
+    
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+
+    }
+    
     func resetResults() {
         self.mostViewedItemsList?.removeAll()
         self.currentOffset = 0
@@ -88,6 +99,14 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
             section: self.defaultSection,
             timePeriod: self.defaultTimePeriod,
             offset: self.currentOffset) { (responseModel, error) in
+                
+                if error != nil {
+                    self.showError(message: (error?.localizedDescription)!)
+                    
+                    SwiftSpinner.hide()
+                    
+                    return
+                }
             
                 self.totalResults = (responseModel?.num_results)!
                 
@@ -109,8 +128,14 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         
             operationsManager.getSectionsList(completionHandler: { (array, error) in
                 
-                self.sections = array
                 SwiftSpinner.hide()
+
+                if error != nil {
+                    self.showError(message: (error?.localizedDescription)!)
+                    return
+                }
+
+                self.sections = array
             
                 let sectionNamesArray = self.sections?.map({ (section: SectionsResults) -> String in
                         section.name!
@@ -137,9 +162,15 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         // Code to refresh table view
         operationsManager.getMostViewed(section: "all-sections", timePeriod: self.defaultTimePeriod, offset: 0) { (responseModel, error) in
             
+            self.refreshControl?.endRefreshing()
+
+            if error != nil {
+                self.showError(message: (error?.localizedDescription)!)
+                return
+            }
+
             self.mostViewedItemsList = responseModel?.results
             
-            self.refreshControl?.endRefreshing()
             self.tableView.reloadData()
         }
     }
